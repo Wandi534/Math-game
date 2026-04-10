@@ -82,3 +82,17 @@ padding: 1rem;
     font-size: 16px;
     color: #ef9f27;
 }
+
+/*hearts*/
+.hearts-display{
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+.heart{
+    display:inline-block;
+}
+
+.heart.lost{
+    opacity: 0.2;
+}
