@@ -119,3 +119,19 @@ padding: 1rem;
 .blink {
     animation: blink 1s step-start infinite;
 }
+
+/*progess bar*/
+.progress-bar-wrap {
+    background: #12122a;
+    border: 1px solid #534ab7;
+    border-radius: 2px;
+    padding: 1.5rem 1rem;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 8px;
+    background:#7f77dd;
+    transition: width 0.3s;
+}
