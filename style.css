@@ -135,3 +135,20 @@ padding: 1rem;
     background:#7f77dd;
     transition: width 0.3s;
 }
+
+/*Question card*/
+.question-card{
+    background: #12122a;
+    border: 1px solid #534ab7;
+    border-radius: 4px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.level-badge{
+    display: block;
+    font-size: 7px;
+    color: #7f77dd;
+    letter-spacing: 1px;
+}
