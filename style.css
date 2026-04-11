@@ -152,3 +152,15 @@ padding: 1rem;
     color: #7f77dd;
     letter-spacing: 1px;
 }
+
+/* Equations */
+.equation {
+    font-size: 22px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+}
