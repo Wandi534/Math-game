@@ -218,3 +218,35 @@ padding: 1rem;
 .btn:hover { background: #2a2a50; }
 .btn-primary { background: #534AB7; color: #EEEDFE; border-color: #7F77DD; }
 .btn-primary:hover { background: #7F77DD; color: #0a0a1a; }
+
+/*Screens*/
+.screen {
+    display: none;
+}
+.screen.active {
+    display: block;
+}
+
+/* Shared screen styles */
+.center-screen { 
+    text-align: center;
+    padding: 1rem 0; 
+}
+.big-msg  {
+    font-size: 13px;
+    color: #EF9F27; 
+    margin-bottom: 1rem; 
+    letter-spacing: 2px; 
+    line-height: 2; 
+}
+.sub-msg  { 
+    font-size: 8px; 
+    color: #7F77DD; 
+    line-height: 2.2; 
+    margin-bottom: 1.25rem;
+}
+.final-score {
+    font-size: 36px;
+    color: #EF9F27; 
+    margin: 1rem 0;
+}
