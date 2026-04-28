@@ -40,3 +40,26 @@ let state = {
     }
     return questions;
   }
+
+    // ── Generate Level 2 questions (multiplication & division) ──
+  function generateLevel2Questions() {
+    let questions = [];
+    for (let i = 0; i < QUESTIONS_PER_LEVEL; i++) {
+      let type = randInt(0, 1);
+      if (type === 0) {
+        let a = randInt(2, 9), b = randInt(2, 9);
+        let answer = a * b;
+        let pos = randInt(0, 2);
+        if (pos === 0) questions.push({ display: `? × ${b} = ${answer}`, answer: a });
+        else if (pos === 1) questions.push({ display: `${a} × ? = ${answer}`, answer: b });
+        else questions.push({ display: `${a} × ${b} = ?`, answer: answer });
+      } else {
+        let b = randInt(2, 9), answer = randInt(2, 9);
+        let a = b * answer;
+        let pos = randInt(0, 1);
+        if (pos === 0) questions.push({ display: `${a} ÷ ${b} = ?`, answer: answer });
+        else questions.push({ display: `${a} ÷ ? = ${answer}`, answer: b });
+      }
+    }
+    return questions;
+  }
