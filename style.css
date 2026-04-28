@@ -249,4 +249,46 @@ padding: 1rem;
     font-size: 36px;
     color: #EF9F27; 
     margin: 1rem 0;
-}
+} 
+
+/* ── Start screen specific styles ── */
+    .start-title {
+      font-size: 20px;
+      color: #EF9F27;
+      letter-spacing: 3px;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+
+    .start-subtitle {
+      font-size: 8px;
+      color: #7F77DD;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .instructions {
+      background: #12122a;
+      border: 1px solid #534AB7;
+      border-radius: 4px;
+      padding: 1.25rem 1rem;
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .instructions p {
+      font-size: 7px;
+      color: #AFA9EC;
+      line-height: 2.4;
+      letter-spacing: 0.5px;
+    }
+
+    .instructions p span {
+      color: #EF9F27;
+    }
+
+    .press-start {
+      font-size: 9px;
+      color: #97C459;
+      letter-spacing: 2px;
+    }
