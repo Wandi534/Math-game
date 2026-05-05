@@ -76,7 +76,6 @@ let state = {
     }
   }
 
-
    // ── Deduct a life and trigger shake animation ──
   function loseLife() {
     state.lives--;
@@ -85,4 +84,50 @@ let state = {
     livesCard.classList.remove('shake');
     void livesCard.offsetWidth; // force reflow to restart animation
     livesCard.classList.add('shake');
+  }
+
+   // ── Render the current question ──
+  function renderQuestion() {
+    let q = state.questions[state.qIndex];
+    let parts = q.display.split('?');
+    let eq = document.getElementById('equation');
+    eq.innerHTML = '';
+
+    // Build equation with input field in place of '?'
+    parts.forEach((part, i) => {
+      if (part.trim()) {
+        let span = document.createElement('span');
+        span.textContent = part.trim();
+        eq.appendChild(span);
+      }
+      if (i < parts.length - 1) {
+        let inp = document.createElement('input');
+        inp.type = 'number';
+        inp.className = 'blank-input';
+        inp.id = 'answer-input';
+        inp.placeholder = '?';
+        inp.addEventListener('keydown', e => { if (e.key === 'Enter') checkAnswer(); });
+        eq.appendChild(inp);
+      }
+    });
+
+     // Update HUD elements
+    document.getElementById('hud-q').textContent = `${state.qIndex + 1}/5`;
+    document.getElementById('progress-bar').style.width =
+      `${(state.qIndex / QUESTIONS_PER_LEVEL) * 100}%`;
+    document.getElementById('level-badge').textContent =
+      state.level === 1 ? 'LEVEL 1 — ADD & SUBTRACT' : 'LEVEL 2 — MULTIPLY & DIVIDE';
+
+    // Reset feedback
+    let fb = document.getElementById('feedback');
+    fb.textContent = '';
+    fb.className = 'feedback';
+
+    state.answered = false;
+
+    // Auto-focus the input
+    setTimeout(() => {
+      let inp = document.getElementById('answer-input');
+      if (inp) inp.focus();
+    }, 50);
   }
