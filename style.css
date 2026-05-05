@@ -214,6 +214,7 @@ padding: 1rem;
     background: #1e1e3a;
     color: #AFA9EC;
     margin-top: 0.5rem;
+    letter-spacing: 1px;
 }
 
 .btn:hover { background: #2a2a50; }
