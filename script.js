@@ -131,3 +131,73 @@ let state = {
       if (inp) inp.focus();
     }, 50);
   }
+
+   // ── Check the player's answer ──
+  function checkAnswer() {
+    if (state.answered) { nextQuestion(); return; }
+
+    let inp = document.getElementById('answer-input');
+    if (!inp) return;
+
+    let val = parseInt(inp.value, 10);
+    let q = state.questions[state.qIndex];
+    let fb = document.getElementById('feedback');
+
+    if (isNaN(val)) {
+      fb.textContent = 'ENTER A NUMBER!';
+      fb.className = 'feedback warn';
+      return;
+    }
+
+    state.answered = true;
+
+    if (val === q.answer) {
+      // Correct answer — award points
+      let pts = state.level === 1 ? 1 : 2;
+      state.score += pts;
+      document.getElementById('hud-score').textContent = state.score;
+      fb.textContent = `★ CORRECT! +${pts} PT${pts > 1 ? 'S' : ''} ★`;
+      fb.className = 'feedback correct';
+      inp.style.borderColor = '#97C459';
+      inp.style.color = '#97C459';
+      setTimeout(nextQuestion, 1300);
+
+    } else {
+      // Wrong answer — lose a life
+      loseLife();
+      fb.textContent = `✕ WRONG! ANS: ${q.answer}`;
+      fb.className = 'feedback wrong';
+      inp.style.borderColor = '#F09595';
+      inp.style.color = '#F09595';
+      inp.value = q.answer;
+
+      if (state.lives <= 0) {
+        // All lives gone — game over
+        setTimeout(() => {
+          document.getElementById('end-heading').textContent = 'OUT OF LIVES!';
+          document.getElementById('final-score').textContent = state.score;
+          showScreen('screen-end');
+        }, 1300);
+      } else {
+        setTimeout(nextQuestion, 1300);
+      }
+    }
+  }
+
+  // ── Advance to the next question or end the level ──
+  function nextQuestion() {
+    if (state.lives <= 0) return;
+    state.qIndex++;
+    if (state.qIndex >= QUESTIONS_PER_LEVEL) {
+      if (state.level === 1) {
+        document.getElementById('levelup-score').textContent = state.score;
+        showScreen('screen-level-up');
+      } else {
+        document.getElementById('end-heading').textContent = 'YOU WIN!';
+        document.getElementById('final-score').textContent = state.score;
+        showScreen('screen-end');
+      }
+    } else {
+      renderQuestion();
+    }
+  }
