@@ -201,3 +201,24 @@ let state = {
       renderQuestion();
     }
   }
+
+  // ── Start a level ──
+  function startLevel(lvl) {
+    state.level = lvl;
+    state.qIndex = 0;
+    state.questions = lvl === 1 ? generateLevel1Questions() : generateLevel2Questions();
+    document.getElementById('hud-level').textContent = lvl;
+    showScreen('screen-play');
+    renderQuestion();
+  }
+
+  //Restart returns to start screen, not directly into gameplay ──
+  function restartGame() {
+    state.score = 0;
+    state.lives = MAX_LIVES;
+    state.level = 1;
+    document.getElementById('hud-score').textContent = 0;
+    updateHeartsDisplay();
+    showScreen('screen-start');
+  }
+
