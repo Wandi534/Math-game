@@ -63,3 +63,26 @@ let state = {
     }
     return questions;
   }
+   // ── Show a screen by id ──
+  function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+  }
+
+   // ── Update heart icons in HUD ──
+  function updateHeartsDisplay() {
+    for (let i = 1; i <= MAX_LIVES; i++) {
+      document.getElementById(`h${i}`).classList.toggle('lost', i > state.lives);
+    }
+  }
+
+
+   // ── Deduct a life and trigger shake animation ──
+  function loseLife() {
+    state.lives--;
+    updateHeartsDisplay();
+    let livesCard = document.getElementById('hud-lives').parentElement;
+    livesCard.classList.remove('shake');
+    void livesCard.offsetWidth; // force reflow to restart animation
+    livesCard.classList.add('shake');
+  }
